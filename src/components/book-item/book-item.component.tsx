@@ -13,15 +13,15 @@ export interface BookItemProps {
   book: Book;
 }
 
-const BookItem: React.FunctionComponent<BookItemProps> = ({book}) => {
+const BookItem: React.FunctionComponent<BookItemProps> = ({
+  book: {coverImageUrl},
+}) => {
   return (
     <TouchableOpacity style={styles.bookItemTouchableOpacity}>
-      <View style={styles.bookItemContainer}>
-        <Image
-          style={styles.bookItemImageBackground}
-          source={{uri: book.coverImageUrl}}
-        />
-      </View>
+      <Image
+        style={styles.bookItemImageBackground}
+        source={{uri: coverImageUrl}}
+      />
     </TouchableOpacity>
   );
 };
@@ -32,10 +32,15 @@ const styles = StyleSheet.create({
     width: 100,
     marginHorizontal: 4,
     borderRadius: 5,
-  },
-  bookItemContainer: {
-    borderRadius: 5,
-    elevation: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+
+    elevation: 9,
   },
   bookItemImageBackground: {
     height: '100%',

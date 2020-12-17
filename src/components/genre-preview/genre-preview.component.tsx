@@ -16,19 +16,17 @@ export interface GenrePreviewProps {
 }
 
 const GenrePreview: React.FunctionComponent<GenrePreviewProps> = ({
-  genreWithBooks,
+  genreWithBooks: {displayName, books},
 }) => {
   const renderBookItem: ListRenderItem<Book> = ({item}) => {
-    return <BookItem book={item} />;
+    return <BookItem key={item._id} book={item} />;
   };
+
   return (
     <View style={styles.genrePreviewContainer}>
-      {genreWithBooks && (
-        <FlatList
-          data={genreWithBooks.books}
-          renderItem={renderBookItem}
-          horizontal
-        />
+      <Text style={styles.genrePreviewDisplayName}>{displayName}</Text>
+      {books && (
+        <FlatList data={books} renderItem={renderBookItem} horizontal />
       )}
     </View>
   );
@@ -37,6 +35,12 @@ const GenrePreview: React.FunctionComponent<GenrePreviewProps> = ({
 const styles = StyleSheet.create({
   genrePreviewContainer: {
     marginVertical: 7,
+  },
+  genrePreviewDisplayName: {
+    marginHorizontal: 4,
+    marginBottom: 4,
+    fontSize: 15,
+    fontWeight: 'bold',
   },
 });
 
