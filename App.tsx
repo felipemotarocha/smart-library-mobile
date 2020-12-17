@@ -34,13 +34,6 @@ const App: React.FunctionComponent = () => {
 
   return (
     <View style={styles.appContainer}>
-      {genresWithBooks &&
-        genresWithBooks.map((genreWithBooks) => (
-          <GenrePreview
-            key={genreWithBooks._id}
-            genreWithBooks={genreWithBooks}
-          />
-        ))}
       {genresWithBooks && (
         <FlatList
           data={genresWithBooks}
