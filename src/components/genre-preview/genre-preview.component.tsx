@@ -7,9 +7,14 @@ import {
   Text,
   View,
 } from 'react-native';
+
 import {Book} from '../../types/book.types';
 import {GenreWithBooksPopulated} from '../../types/genre.types';
 import BookItem from '../book-item/book-item.component';
+import {
+  GenrePreviewContainer,
+  GenrePreviewDisplayName,
+} from './genre-preview.styles';
 
 export interface GenrePreviewProps {
   genreWithBooks: GenreWithBooksPopulated;
@@ -23,25 +28,13 @@ const GenrePreview: React.FunctionComponent<GenrePreviewProps> = ({
   };
 
   return (
-    <View style={styles.genrePreviewContainer}>
-      <Text style={styles.genrePreviewDisplayName}>{displayName}</Text>
+    <GenrePreviewContainer>
+      <GenrePreviewDisplayName>{displayName}</GenrePreviewDisplayName>
       {books && (
         <FlatList data={books} renderItem={renderBookItem} horizontal />
       )}
-    </View>
+    </GenrePreviewContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  genrePreviewContainer: {
-    marginVertical: 7,
-  },
-  genrePreviewDisplayName: {
-    marginHorizontal: 4,
-    marginBottom: 4,
-    fontSize: 15,
-    fontWeight: 'bold',
-  },
-});
 
 export default GenrePreview;

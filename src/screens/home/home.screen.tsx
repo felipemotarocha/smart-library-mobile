@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as React from 'react';
-import {ListRenderItem, View} from 'react-native';
+import {ListRenderItem} from 'react-native';
 import Config from 'react-native-config';
 import {FlatList} from 'react-native-gesture-handler';
 

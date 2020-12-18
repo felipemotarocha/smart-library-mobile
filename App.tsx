@@ -10,7 +10,11 @@ const App: React.FunctionComponent = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{title: 'Smart Library'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
