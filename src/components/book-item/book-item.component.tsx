@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  Image,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {Book} from '../../types/book.types';
 
 export interface BookItemProps {

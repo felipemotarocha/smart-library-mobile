@@ -1,53 +1,19 @@
 import * as React from 'react';
-import {useEffect} from 'react';
-import {FlatList, ListRenderItem, StyleSheet, Text, View} from 'react-native';
-import Config from 'react-native-config';
-import axios from 'axios';
-import {GenreWithBooksPopulated} from './src/types/genre.types';
-import GenrePreview from './src/components/genre-preview/genre-preview.component';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+import HomeScreen from './src/screens/home/home.screen';
 
 const App: React.FunctionComponent = () => {
-  const [genresWithBooks, setGenresWithBooks] = React.useState<
-    GenreWithBooksPopulated[]
-  >();
-
-  useEffect(() => {
-    const fetchGenresWithBooks = async () => {
-      try {
-        const {data} = await axios.get(
-          `http://${Config.API_URL}/genres?withBooks=true`,
-        );
-        setGenresWithBooks(data);
-      } catch (err) {
-        console.warn(err);
-      }
-    };
-
-    fetchGenresWithBooks();
-  }, []);
-
-  const renderGenreWithBooksItem: ListRenderItem<GenreWithBooksPopulated> = ({
-    item,
-  }) => {
-    return <GenrePreview key={item._id} genreWithBooks={item} />;
-  };
+  const Stack = createStackNavigator();
 
   return (
-    <View style={styles.appContainer}>
-      {genresWithBooks && (
-        <FlatList
-          data={genresWithBooks}
-          renderItem={renderGenreWithBooksItem}
-        />
-      )}
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  appContainer: {
-    flex: 1,
-  },
-});
 
 export default App;
