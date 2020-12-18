@@ -1,15 +1,8 @@
 import * as React from 'react';
-import {
-  Button,
-  FlatList,
-  ListRenderItem,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {FlatList, ListRenderItem} from 'react-native';
 
-import {Book} from '../../types/book.types';
-import {GenreWithBooksPopulated} from '../../types/genre.types';
+import {Book} from '../../types/entities/book.types';
+import {GenreWithBooksPopulated} from '../../types/entities/genre.types';
 import BookItem from '../book-item/book-item.component';
 import {
   GenrePreviewContainer,

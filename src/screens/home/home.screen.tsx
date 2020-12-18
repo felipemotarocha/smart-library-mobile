@@ -5,7 +5,8 @@ import Config from 'react-native-config';
 import {FlatList} from 'react-native-gesture-handler';
 
 import GenrePreview from '../../components/genre-preview/genre-preview.component';
-import {GenreWithBooksPopulated} from '../../types/genre.types';
+import {GenreWithBooksPopulated} from '../../types/entities/genre.types';
+
 import {HomeScreenContainer} from './home.screen.styles';
 
 export interface HomeScreenProps {}

@@ -2,20 +2,21 @@ import * as React from 'react';
 import {GestureResponderEvent} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {Book} from '../../types/book.types';
 import {BookItemImage, BookItemTouchableOpacity} from './book-item.styles';
+import {Book} from '../../types/entities/book.types';
+import {HomeScreenNavigationProp} from '../../types/navigation/navigation.types';
 
 export interface BookItemProps {
   book: Book;
 }
 
 const BookItem: React.FunctionComponent<BookItemProps> = ({
-  book: {coverImageUrl, _id},
+  book: {_id, title, coverImageUrl},
 }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeScreenNavigationProp>();
 
-  const handleNavigateToTheBookPage = (event: GestureResponderEvent) => {
-    navigation.navigate('BookDetails', {bookId: _id});
+  const handleNavigateToTheBookPage = (_event: GestureResponderEvent) => {
+    navigation.navigate('BookDetails', {bookId: _id, bookTitle: title});
   };
 
   return (
