@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {FlatList, ListRenderItem} from 'react-native';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../redux/root.reducer';
 
 import {Book} from '../../types/entities/book.types';
 import {GenreWithBooksPopulated} from '../../types/entities/genre.types';
